@@ -26,16 +26,24 @@ class MarkovMachine {
    *
    * */
 
-  getChains() {
+  getChains(self) {
     // TODO: implement this!
     let chain = {};
 
     for (let i = 0; i < this.words.length; i++) {
-      chain[this.words[i]] = [this.words[i+1]];
-
-      if (this.words[i+1] === undefined) {
-        chain[this.words[i]] = [null];
+      if (this.words[i] in chain) {
+        if (this.words[i+1] === undefined) {
+          chain[this.words[i]].push(null);
+        } else {
+          chain[this.words[i]].push(this.words[i+1]);
+        }
+      } else {
+        chain[this.words[i]] = [this.words[i+1]];
+        if (this.words[i+1] === undefined) {
+          chain[this.words[i]] = [null];
+        }
       }
+
     }
     return chain;
   }

@@ -1,3 +1,4 @@
+"use strict";
 /** Textual markov chain generator. */
 
 
@@ -31,7 +32,10 @@ class MarkovMachine {
     let chain = {};
 
     for (let i = 0; i < this.words.length; i++) {
-
+      //TODO: assign variables to this.words[i] and this.words[i+1]
+      // - shortcircuit next_word to make it equal to null when it hits undefined
+      // - look at map datatype
+      // - change chain to chains
       if (this.words[i] in chain) {
 
         if (this.words[i+1] === undefined) {
@@ -75,11 +79,12 @@ class MarkovMachine {
 
     const sentence = [];
     const wordsInObject = Object.keys(this.chains);
-
+    //FIXME: NO SNAKE CASES WERE NOT IN PYTHON
     let curr_word = wordsInObject[0];
     sentence.push(curr_word);
 
     while (curr_word !== null) {
+      //FIXME: make this its own function for better testing and readability
       let idx = Math.floor(
         Math.random() * this.chains[curr_word].length
       );

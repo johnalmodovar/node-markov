@@ -24,8 +24,33 @@ describe("getChains", function () {
     expect(chains["hat."]).toContain(null);
   });
 
-  test("for correct length for chains object", function() {
-    expect(chains.length).toEqual(5);
-  })
+  test("for correct number of keys in chains object", function() {
+    expect(Object.keys(chains).length).toEqual(5);
+  });
 
+  test("if words are being correctly pushed into keys", function() {
+    expect(Object.keys(chains)).toContain("hat.");
+  });
+
+});
+
+describe("getText", function () {
+  let sentence;
+
+  beforeEach(function() {
+    sentence = machine.getText();
+  });
+
+  test("if the sentence output equals the original text input", function() {
+    expect(sentence).toEqual("The cat in the hat. ");
+  });
+
+});
+
+describe("getChoice", function () {
+  let length = 5;
+  let index = MarkovMachine.getChoice(length);
+  test("if index returned is within range of 0 - input length", function () {
+    expect(index).toBeLessThan(length);
+  });
 });

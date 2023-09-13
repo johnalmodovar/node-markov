@@ -85,21 +85,3 @@ class MarkovMachine {
 module.exports = {
   MarkovMachine,
 };
-
-// let randomWords = [];
-
-
-//     for (let word in this.chains) {
-//       let idx = Math.floor(
-//         Math.random() * this.chains[word].length
-//       );
-
-//       if (this.chains[word][idx] === null) {
-//         return randomWords.join(' ');
-//       } else {
-
-//         randomWords.push(this.chains[word][idx])
-//       }
-//     }
-
-//     return randomWords.join(' ');
